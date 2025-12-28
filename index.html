@@ -1,30 +1,46 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <title>Play2Earn Arena</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <link rel="stylesheet" href="style.css">
+<meta charset="UTF-8">
+<title>Play2Earn Arena</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="stylesheet" href="css/style.css">
 </head>
 
-<body><div id="rewardContainer">
-  <div id="rewardFill"></div>
-</div>
+<body class="home">
 
-  <!-- TOP BAR -->
-  <div id="topBar">
-    <span id="pointsText">Points: 0</span>
-    <span id="progressText">Progress: 0%</span>
+<header class="hero">
+  <h1>🎮 Play2Earn Arena</h1>
+  <p>Turn your free time into real rewards</p>
+
+  <div class="stats">
+    <div><b>10,000+</b><span>Players</span></div>
+    <div><b>₵50,000+</b><span>Rewards Paid</span></div>
+    <div><b>24/7</b><span>Active</span></div>
   </div>
 
-  <!-- STEP 2 WILL GO HERE -->
+  <button onclick="goLogin()">Start Earning</button>
+</header>
 
-  <!-- GAME CANVAS -->
-  <canvas id="gameCanvas"></canvas>
+<section class="info">
+  <h2>How It Works</h2>
+  <ol>
+    <li>Create an account</li>
+    <li>Get approved</li>
+    <li>Play games</li>
+    <li>Earn rewards</li>
+  </ol>
+</section>
 
-  <!-- EXIT BUTTON -->
-  <button id="exitBtn">Exit Game</button>
+<footer>
+  <p>© 2025 Play2Earn Arena</p>
+</footer>
 
-  <script src="game.js"></script>
+<script>
+function goLogin(){
+  location.href = "login.html";
+}
+</script>
+
 </body>
 </html>
