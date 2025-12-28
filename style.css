@@ -1,116 +1,66 @@
 body {
-  margin: 0;
-  background: linear-gradient(135deg, #0f2027, #203a43, #2c5364);
-  font-family: Arial, sans-serif;
-  overflow: hidden;
-}
-#rewardBox {
-  width: 90%;
-  margin: 10px auto;
+  background: linear-gradient(#020024, #090979, #000);
+  color: white;
+  font-family: Arial;
   text-align: center;
-  color: #fff;
-  font-size: 14px;
+  margin: 0;
 }
 
-#rewardContainer {
-  width: 100%;
-  height: 18px;
-  background: rgba(255,255,255,0.2);
-  border-radius: 10px;
-  overflow: hidden;
-}
-
-#rewardFill {
-  width: 0%;
-  height: 100%;
-  background: linear-gradient(90deg, #00ffcc, #00ffaa);
-  transition: width 0.3s ease;
-}
-/* TOP BAR */
-#topBar {
-  display: flex;
-  justify-content: space-between;
-  padding: 12px 16px;
-  color: white;
-  font-size: 16px;
-}
-
-/* REWARD GAUGE */
-#rewardContainer {
-  width: 90%;
-  height: 18px;
-  background: rgba(255,255,255,0.25);
-  border-radius: 10px;
-  margin: 6px auto;
-  overflow: hidden;
-}
-
-#rewardFill {
-  width: 0%;
-  height: 100%;
-  background: linear-gradient(90deg, gold, orange);
-  transition: width 0.3s ease;
-}
-
-/* CANVAS */
-canvas {
-  display: block;
-  margin: auto;
-}
-
-/* EXIT BUTTON */
-#exitBtn {
-  position: fixed;
-  bottom: 20px;
-  left: 50%;
-  transform: translateX(-50%);
-  padding: 14px 30px;
-  background: gold;
-  border: none;
-  border-radius: 12px;
-  font-size: 16px;
-  font-weight: bold;
-}
-#menu-btn {
-  position: fixed;
-  top: 12px;
-  left: 12px;
-  font-size: 26px;
-  cursor: pointer;
-  z-index: 1000;
-}
-
-#menu {
-  position: fixed;
-  top: 0;
-  left: -260px;
-  width: 240px;
-  height: 100%;
-  background: #0a1020;
+.auth-box {
+  width: 300px;
+  margin: 120px auto;
+  background: #0b132b;
   padding: 20px;
-  transition: 0.3s;
-  z-index: 999;
+  border-radius: 10px;
 }
 
-#menu a,
-#menu button {
-  display: block;
-  margin: 15px 0;
-  padding: 12px;
-  background: #111a35;
-  color: white;
-  border: none;
-  border-radius: 8px;
-  text-decoration: none;
-  font-size: 16px;
-  text-align: left;
-}
-
-#menu button {
+input, button {
   width: 100%;
-  cursor: pointer;
+  margin: 8px 0;
+  padding: 10px;
 }
 
-#menu.open {
-  left: 0;
+.top-bar {
+  background: #0b132b;
+  padding: 15px;
+  font-size: 18px;
+}
+
+.game-container {
+  margin-top: 40px;
+}
+
+canvas {
+  background: black;
+  border-radius: 12px;
+}
+
+.progress {
+  width: 260px;
+  height: 10px;
+  background: #333;
+  margin: 15px auto;
+  border-radius: 5px;
+}
+
+#progressFill {
+  height: 100%;
+  width: 0%;
+  background: lime;
+  border-radius: 5px;
+}
+
+.popup {
+  display: none;
+  position: fixed;
+  inset: 0;
+  background: rgba(0,0,0,0.8);
+}
+
+.popup-box {
+  background: #111;
+  padding: 20px;
+  width: 260px;
+  margin: 150px auto;
+  border-radius: 10px;
 }
