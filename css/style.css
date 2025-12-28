@@ -1,26 +1,20 @@
 body {
-  background: #0f172a;
+  margin: 0;
+  background: linear-gradient(#0a1020, #050814);
   color: white;
+  font-family: Arial, sans-serif;
+  overflow: hidden;
+}
+
+#top-bar {
   text-align: center;
-  font-family: Arial;
+  padding: 12px;
+  font-size: 18px;
 }
 
 canvas {
-  background: black;
-  margin-top: 15px;
-  border-radius: 10px;
-}
-
-.progress-bar {
-  width: 80%;
-  height: 10px;
-  background: #333;
-  margin: 10px auto;
-  border-radius: 5px;
-}
-
-#progress {
-  height: 100%;
-  width: 0%;
-  background: lime;
+  display: block;
+  margin: 0 auto;
+  background: #000;
+  border-radius: 12px;
 }
