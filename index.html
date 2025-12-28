@@ -167,3 +167,86 @@ window.logout = () => {
 
 </body>
 </html>
+<script type="module">
+import { initializeApp } from "https://www.gstatic.com/firebasejs/12.7.0/firebase-app.js";
+import { getAuth, createUserWithEmailAndPassword } from "https://www.gstatic.com/firebasejs/12.7.0/firebase-auth.js";
+import { getDatabase, ref, set } from "https://www.gstatic.com/firebasejs/12.7.0/firebase-database.js";
+
+const firebaseConfig = {
+  apiKey: "AIzaSyD-YhBz-AkexkNZ8OqIJzEeMN8AhZYqVG0",
+  authDomain: "play2earn-arena-cab9d.firebaseapp.com",
+  databaseURL: "https://play2earn-arena-cab9d-default-rtdb.firebaseio.com",
+  projectId: "play2earn-arena-cab9d",
+  storageBucket: "play2earn-arena-cab9d.appspot.com",
+  messagingSenderId: "309303655208",
+  appId: "1:309303655208:web:0e153671ea2591d655ae1d"
+};
+
+const app = initializeApp(firebaseConfig);
+const auth = getAuth(app);
+const db = getDatabase(app);
+
+/* ===== GAME ===== */
+const TARGETS = [2000000, 4000000, 6000000];
+let level = 0;
+let points = 0;
+
+const pointsEl = document.getElementById("points");
+const targetEl = document.getElementById("target");
+targetEl.innerText = TARGETS[level].toLocaleString();
+
+document.getElementById("tapBtn").onclick = () => {
+  points++;
+  pointsEl.innerText = points.toLocaleString();
+
+  if (points >= TARGETS[level] && level < TARGETS.length - 1) {
+    level++;
+    targetEl.innerText = TARGETS[level].toLocaleString();
+  }
+};
+
+/* ===== MODAL CONTROL ===== */
+window.showRegister = () => {
+  document.getElementById("registerModal").classList.remove("hidden");
+};
+
+window.closeRegister = () => {
+  document.getElementById("registerModal").classList.add("hidden");
+};
+
+/* ===== REGISTER (FINAL FIX) ===== */
+window.register = async () => {
+  const email = document.getElementById("regEmail").value.trim();
+  const pass = document.getElementById("regPass").value.trim();
+
+  if (!email || !pass) {
+    alert("Enter email and password");
+    return;
+  }
+
+  try {
+    const btn = event.target;
+    btn.disabled = true;
+    btn.innerText = "Creating...";
+
+    const cred = await createUserWithEmailAndPassword(auth, email, pass);
+
+    await set(ref(db, "users/" + cred.user.uid), {
+      points: 0,
+      level: 0,
+      createdAt: Date.now()
+    });
+
+    // ✅ CLOSE MODAL (THIS WAS MISSING)
+    closeRegister();
+
+    // ✅ CLEAN SUCCESS FEEDBACK
+    setTimeout(() => {
+      alert("✅ Account created successfully");
+    }, 200);
+
+  } catch (err) {
+    alert(err.message);
+  }
+};
+</script>
