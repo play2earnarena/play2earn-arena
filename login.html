@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Login – Play2Earn</title>
+<link rel="stylesheet" href="css/style.css">
+</head>
+
+<body class="center">
+
+<div class="login-box">
+  <h2>Login</h2>
+  <input id="phone" placeholder="Phone Number">
+  <input id="password" type="password" placeholder="Password">
+  <button onclick="login()">Continue</button>
+  <p id="msg"></p>
+</div>
+
+<script>
+function login(){
+  const phone = phoneInput.value = document.getElementById("phone").value;
+  const pass = document.getElementById("password").value;
+
+  if(!phone || !pass){
+    alert("Fill all fields");
+    return;
+  }
+
+  localStorage.setItem("user", phone);
+
+  // ❌ NOT APPROVED YET
+  if(localStorage.getItem("approved_"+phone) !== "yes"){
+    document.getElementById("msg").innerHTML =
+    `⏳ Awaiting approval<br>
+     <a href="PASTE_YOUR_APPROVAL_LINK_HERE">Request approval</a>`;
+    return;
+  }
+
+  location.href = "game.html";
+}
+</script>
+
+</body>
+</html>
