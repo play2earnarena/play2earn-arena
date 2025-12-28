@@ -8,7 +8,15 @@ function resizeCanvas() {
 }
 resizeCanvas();
 window.addEventListener("resize", resizeCanvas);
+// =================== REWARD TARGETS ===================
+const REWARD_TARGETS = [
+  { points: 1000000, label: "₵5 Airtime" },
+  { points: 4000000, label: "₵7 Airtime" },
+  { points: 6000000, label: "₵10 Airtime" }
+];
 
+let currentRewardIndex = 0;
+let warned = false;
 let bubbles = [];
 let points = 0;
 let progress = 0;
