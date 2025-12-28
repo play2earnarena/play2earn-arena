@@ -1,6 +1,7 @@
 const canvas = document.getElementById("gameCanvas");
 const ctx = canvas.getContext("2d");
-
+points += 10; // or whatever you use
+updateRewardProgress();
 // resize canvas
 function resizeCanvas() {
   canvas.width = window.innerWidth;
