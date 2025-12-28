@@ -1,22 +1,19 @@
 <!DOCTYPE html>
 <html>
-<head>
-  <title>Admin Panel</title>
-  <link rel="stylesheet" href="style.css">
-</head>
 <body>
 
-<h2>👑 Admin Dashboard</h2>
+<h2>Admin Approval</h2>
 
-<table border="1" cellpadding="10">
-  <tr>
-    <th>User</th>
-    <th>Balance</th>
-    <th>Action</th>
-  </tr>
-  <tbody id="users"></tbody>
-</table>
+<input id="phone" placeholder="User phone">
+<button onclick="approve()">Approve User</button>
 
-<script src="admin.js"></script>
+<script>
+function approve(){
+  const phone = document.getElementById("phone").value;
+  localStorage.setItem("approved_"+phone,"yes");
+  alert(phone + " approved");
+}
+</script>
+
 </body>
 </html>
