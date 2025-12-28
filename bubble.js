@@ -1,6 +1,7 @@
 const canvas = document.getElementById("gameCanvas");
 const ctx = canvas.getContext("2d");
 
+// resize canvas
 function resizeCanvas() {
   canvas.width = window.innerWidth;
   canvas.height = window.innerHeight - 120;
@@ -12,17 +13,15 @@ let bubbles = [];
 let points = 0;
 let progress = 0;
 
-const user = localStorage.getItem("user");
-
+// bubble class
 class Bubble {
   constructor() {
-    this.radius = 15 + Math.random() * 10;
+    this.radius = 20;
     this.x = Math.random() * canvas.width;
-    this.y = canvas.height + this.radius;
+    this.y = canvas.height + Math.random() * 200;
     this.speed = 1 + Math.random() * 2;
-    this.color = ["#ff4d4d","#4dd2ff","#4dff88","#ffd24d"][
-      Math.floor(Math.random() * 4)
-    ];
+    this.color = ["#ff4d4d", "#4dd2ff", "#4dff88", "#ffd24d"]
+      [Math.floor(Math.random() * 4)];
   }
 
   draw() {
@@ -38,14 +37,18 @@ class Bubble {
   }
 }
 
+// spawn bubbles
 function spawnBubble() {
   bubbles.push(new Bubble());
 }
+setInterval(spawnBubble, 700);
 
-canvas.addEventListener("click", (e) => {
-  bubbles.forEach((b, i) => {
-    const dx = e.clientX - b.x;
-    const dy = e.clientY - b.y;
+// touch + click support
+function handleTap(x, y) {
+  for (let i = bubbles.length - 1; i >= 0; i--) {
+    const b = bubbles[i];
+    const dx = x - b.x;
+    const dy = y - b.y;
     if (Math.sqrt(dx * dx + dy * dy) < b.radius) {
       bubbles.splice(i, 1);
       points += 10;
@@ -53,28 +56,32 @@ canvas.addEventListener("click", (e) => {
 
       document.getElementById("score").innerText = "Points: " + points;
       document.getElementById("meter").innerText = "Progress: " + progress + "%";
-
-      if (progress >= 100) redeem();
+      break;
     }
-  });
-});
-
-function redeem() {
-  const reward = points;
-  let balance = Number(localStorage.getItem("balance_" + user)) || 0;
-  balance += reward;
-
-  localStorage.setItem("balance_" + user, balance);
-
-  alert(`🎉 You earned ${reward} points\nBalance: ${balance}`);
-  location.href = "index.html";
+  }
 }
 
+canvas.addEventListener("click", e => {
+  const rect = canvas.getBoundingClientRect();
+  handleTap(e.clientX - rect.left, e.clientY - rect.top);
+});
+
+canvas.addEventListener("touchstart", e => {
+  const rect = canvas.getBoundingClientRect();
+  const touch = e.touches[0];
+  handleTap(touch.clientX - rect.left, touch.clientY - rect.top);
+});
+
+// animation loop
 function animate() {
   ctx.clearRect(0, 0, canvas.width, canvas.height);
   bubbles.forEach(b => b.update());
   requestAnimationFrame(animate);
 }
 
-setInterval(spawnBubble, 800);
+// TEST DRAW (you should see this immediately)
+ctx.fillStyle = "white";
+ctx.font = "20px Arial";
+ctx.fillText("Game Loaded ✔", 20, 40);
+
 animate();
