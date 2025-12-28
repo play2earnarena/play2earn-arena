@@ -84,3 +84,19 @@ gameLoop();
 document.getElementById("exitBtn").onclick = () => {
   window.location.href = "index.html";
 };
+// MENU TOGGLE
+const menuBtn = document.getElementById("menu-btn");
+const menu = document.getElementById("menu");
+
+menuBtn.onclick = () => {
+  menu.classList.toggle("open");
+};
+
+// LOGOUT
+import { signOut } from "https://www.gstatic.com/firebasejs/12.7.0/firebase-auth.js";
+
+document.getElementById("logoutBtn").onclick = () => {
+  signOut(auth).then(() => {
+    window.location.href = "index.html";
+  });
+};
