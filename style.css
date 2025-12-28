@@ -71,3 +71,46 @@ canvas {
   font-size: 16px;
   font-weight: bold;
 }
+#menu-btn {
+  position: fixed;
+  top: 12px;
+  left: 12px;
+  font-size: 26px;
+  cursor: pointer;
+  z-index: 1000;
+}
+
+#menu {
+  position: fixed;
+  top: 0;
+  left: -260px;
+  width: 240px;
+  height: 100%;
+  background: #0a1020;
+  padding: 20px;
+  transition: 0.3s;
+  z-index: 999;
+}
+
+#menu a,
+#menu button {
+  display: block;
+  margin: 15px 0;
+  padding: 12px;
+  background: #111a35;
+  color: white;
+  border: none;
+  border-radius: 8px;
+  text-decoration: none;
+  font-size: 16px;
+  text-align: left;
+}
+
+#menu button {
+  width: 100%;
+  cursor: pointer;
+}
+
+#menu.open {
+  left: 0;
+}
