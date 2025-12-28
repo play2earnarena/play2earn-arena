@@ -1,0 +1,47 @@
+body {
+  margin: 0;
+  font-family: Arial, sans-serif;
+  background: linear-gradient(135deg, #0f2027, #203a43, #2c5364);
+  color: white;
+}
+
+.center {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+}
+
+.login-box {
+  background: rgba(0,0,0,0.6);
+  padding: 30px;
+  border-radius: 12px;
+  text-align: center;
+}
+
+input {
+  padding: 10px;
+  width: 100%;
+  margin: 10px 0;
+}
+
+button {
+  padding: 10px 20px;
+  background: gold;
+  border: none;
+  border-radius: 6px;
+  font-weight: bold;
+}
+
+#topBar {
+  display: flex;
+  justify-content: space-between;
+  padding: 10px;
+}
+
+#exitBtn {
+  position: fixed;
+  bottom: 20px;
+  left: 50%;
+  transform: translateX(-50%);
+}
