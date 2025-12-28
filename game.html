@@ -4,25 +4,18 @@
   <title>Play2Earn Game</title>
   <link rel="stylesheet" href="css/style.css">
 </head>
-
 <body>
 
-<div class="top-bar">
-  <span id="points">Points: 0</span>
-  <span id="progressText">Progress: 0%</span>
+<h2>Points: <span id="points">0</span></h2>
+
+<div class="progress-bar">
+  <div id="progress"></div>
 </div>
 
-<div id="rewardContainer">
-  <div id="rewardFill"></div>
-</div>
+<canvas id="gameCanvas" width="360" height="500"></canvas>
 
-<canvas id="gameCanvas"></canvas>
+<script type="module" src="js/firebase.js"></script>
+<script type="module" src="js/game.js"></script>
 
-<button class="exit" onclick="exitGame()">Exit Game</button>
-
-<audio id="tapSound" src="assets/tap.mp3"></audio>
-<audio id="bgSound" src="assets/bg.mp3" loop></audio>
-
-<script src="js/game.js"></script>
 </body>
 </html>
