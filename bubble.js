@@ -14,7 +14,25 @@ const REWARD_TARGETS = [
   { points: 4000000, label: "₵7 Airtime" },
   { points: 6000000, label: "₵10 Airtime" }
 ];
+function updateRewardProgress() {
+  const reward = REWARD_TARGETS[currentRewardIndex];
+  const percent = Math.min((points / reward.points) * 100, 100);
 
+  document.getElementById("rewardFill").style.width = percent + "%";
+  document.getElementById("rewardText").innerText =
+    `Target: ${reward.label} (${Math.floor(percent)}%)`;
+
+  if (percent >= 90 && !warned) {
+    warned = true;
+    alert("🔥 You are very close to winning a reward!");
+  }
+
+  if (percent >= 100) {
+    alert(`🎉 Congratulations! You won ${reward.label}`);
+    currentRewardIndex = Math.min(currentRewardIndex + 1, REWARD_TARGETS.length - 1);
+    warned = false;
+  }
+}
 let currentRewardIndex = 0;
 let warned = false;
 let bubbles = [];
