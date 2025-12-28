@@ -1,21 +1,21 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-  <title>Play2Earn Game</title>
+  <meta charset="UTF-8">
+  <title>Earn Arena</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link rel="stylesheet" href="css/style.css">
 </head>
+
 <body>
 
-<h2>Points: <span id="points">0</span></h2>
+  <div id="top-bar">
+    Points: <span id="points">0</span>
+  </div>
 
-<div class="progress-bar">
-  <div id="progress"></div>
-</div>
+  <canvas id="gameCanvas"></canvas>
 
-<canvas id="gameCanvas" width="360" height="500"></canvas>
-
-<script type="module" src="js/firebase.js"></script>
-<script type="module" src="js/game.js"></script>
-
+  <!-- MUST be module -->
+  <script type="module" src="js/game.js"></script>
 </body>
 </html>
