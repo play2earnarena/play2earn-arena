@@ -1,30 +1,34 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
 <head>
-  <meta charset="UTF-8">
-  <title>Earn Arena</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <link rel="stylesheet" href="css/style.css">
+  <title>Tap Game</title>
+  <link rel="stylesheet" href="style.css">
 </head>
-<!-- MENU BUTTON -->
-<div id="menu-btn">☰</div>
-
-<!-- SIDE MENU -->
-<div id="menu">
-  <a href="index.html">🏠 Home</a>
-  <a href="game.html">🎮 Play</a>
-  <a href="wallet.html">💰 Wallet</a>
-  <button id="logoutBtn">🚪 Logout</button>
-</div>
 <body>
 
-  <div id="top-bar">
-    Points: <span id="points">0</span>
+<div class="top-bar">
+  <span>Points: <span id="points">0</span></span>
+</div>
+
+<div class="game-container">
+  <canvas id="gameCanvas" width="260" height="260"></canvas>
+
+  <div class="progress">
+    <div id="progressFill"></div>
   </div>
 
-  <canvas id="gameCanvas"></canvas>
+  <p>🎯 Tap to earn points</p>
+</div>
 
-  <!-- MUST be module -->
-  <script type="module" src="js/game.js"></script>
+<div id="redeemPopup" class="popup">
+  <div class="popup-box">
+    <h3>🎉 You can redeem!</h3>
+    <p id="rewardText"></p>
+    <button onclick="redeem()">Redeem</button>
+    <button onclick="closePopup()">Continue</button>
+  </div>
+</div>
+
+<script type="module" src="app.js"></script>
 </body>
 </html>
